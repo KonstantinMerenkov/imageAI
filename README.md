@@ -1,4 +1,4 @@
-# Intel Image Classification Hackathon
+# Хакатон по классификации изображений
 
 Целью этого проекта является классификация изображений по следующим 6 сценам: здания, лес, ледник, гора, море, улица. Набор данных, используемый в этом проекте, напрямую загружается с [Kaggle](https://www.kaggle.com/puneet6060/intel-image-classification). Согласно описанию набора данных Kaggle, этот набор данных изначально был опубликован на [Analytics Vidhya](https://datahack.analyticsvidhya.com) Intel Image Classification Challenge.
 
