@@ -1,13 +1,13 @@
 # Intel Image Classification Hackathon
 
-This project's objective is to classify images into these 6 following scenes :- buildings, forest, glacier, mountain, sea, street. A dataset used in this project is directly download from [Kaggle](https://www.kaggle.com/puneet6060/intel-image-classification). According to the Kaggle dataset description, this dataset is originally be published on [Analytics Vidhya](https://datahack.analyticsvidhya.com) Intel Image Classification Challenge. I'm pleased to thank both of them for distributing the dataset.
+Целью этого проекта является классификация изображений по следующим 6 сценам: здания, лес, ледник, гора, море, улица. Набор данных, используемый в этом проекте, напрямую загружается с [Kaggle](https://www.kaggle.com/puneet6060/intel-image-classification). Согласно описанию набора данных Kaggle, этот набор данных изначально был опубликован на [Analytics Vidhya](https://datahack.analyticsvidhya.com) Intel Image Classification Challenge.
 
 ## Live Demo
 https://luangtatipsy.github.io/intel-image-classification-web-app/
 
 
 ## Dataset Specification
-For this project, I modified the dataset directories a bit for more convenience. The dataset is distributed under `datasets` directory in `root` directory. Inside `datasets` there are 3 directories consisting of `seg_pred`, `seg_test`, and `seg_train` storing unseen images, test images, and training images respectively. Those directories contain 14,034, 3,000 and 7,301 images for training set, test set, and unseen images respectively. All images are sized 150x150.
+Для этого проекта я немного изменил каталоги набора данных для большего удобства. Набор данных распределен по datasetsкаталогам в root-каталоге. Внутри datasetsесть 3 каталога, состоящие из 'seg_pred', 'seg_test' и , 'seg_train' в которых хранятся невидимые изображения, тестовые изображения и обучающие изображения соответственно. Эти каталоги содержат 14 034, 3 000 и 7 301 изображение для обучающего набора, тестового набора и невидимых изображений соответственно. Все изображения имеют размер 150x150.
 
 ## Prerequisites
 - Git
@@ -33,7 +33,7 @@ python -m pip install -r requirements.txt
 ```
 
 ## Model Architecture
-The pre-trained model leverages the power of concept of transfer learning, using [InceptionV3](https://keras.io/api/applications/inceptionv3/) with ImageNet's weight. Only classification head is trained, for more detail please see this [link](https://www.tensorflow.org/tutorials/images/transfer_learning#add_a_classification_head)
+Предварительно обученная модель использует силу концепции трансферного обучения, используя [InceptionV3](https://keras.io/api/applications/inceptionv3/) с весом ImageNet. Обучается только классификационная голова, для получения более подробной информации [link](https://www.tensorflow.org/tutorials/images/transfer_learning#add_a_classification_head)
 
 ```
 __________________________________________________________________________________________________
@@ -710,14 +710,14 @@ Non-trainable params: 21,802,784
 __________________________________________________________________________________________________
 ```
 
-## Training a Model
-[`train.py`](https://github.com/luangtatipsy/intel-image-classification/blob/master/train.py) script will train the model with 15 epochs, and it will be saved into `models` directory. At the same time, a training log is saved into `logs` directory in CSV format.
+## Обучение модели
+[`train.py`](https://github.com/luangtatipsy/intel-image-classification/blob/master/train.py) Скрипт обучит модель 15 эпохам и сохранит ее в 'models'. В то же время журнал обучения сохраняется в 'logs' в формате CSV.
 ```sh
 python train.py
 ```
 
-## Model Evaluation
-According to the classification report table below, the model yields 90.2% accuracy which can used in the real-world application. The model confidently classifies forest images, the highest F1-Score as 98.72%. On the other hand, model generally classifies incorrectly between glacier and mountain images.
+## Оценка модели
+Согласно таблице отчета классификации ниже, модель обеспечивает точность 90,2%, что может использоваться в реальном приложении. Модель уверенно классифицирует изображения леса, наивысшая оценка F1 составляет 98,72%. С другой стороны, модель обычно неправильно классифицирует изображения ледника и горы.
 
 |              | precision | recall | f1-score | support |
 |--------------|:---------:|:------:|:--------:|:-------:|
@@ -732,9 +732,9 @@ According to the classification report table below, the model yields 90.2% accur
 |    macro avg |    0.9048 | 0.9041 |   0.9042 |    3000 |
 | weighted avg |    0.9029 | 0.9020 |   0.9021 |    3000 |
 
-What I mentioned above is a roughly observation. A confusion matrix heatmap shows another issue of this model, the model also incorrectly classfifies between buildings and street images. Please see this [link](https://github.com/luangtatipsy/intel-image-classification/blob/master/101_result_analysis.ipynb)
+То, что я упомянул выше, является грубым наблюдением. Тепловая карта матрицы путаницы показывает еще одну проблему этой модели, модель также неправильно классифицирует здания и изображения улиц. Пожалуйста, посмотрите эту [link](https://github.com/luangtatipsy/intel-image-classification/blob/master/101_result_analysis.ipynb)
 
-## Sample Prediction Results
+## Примеры результатов прогнозирования
 <img src="https://github.com/luangtatipsy/intel-image-classification/blob/master/results/figures/buildings.png" alt="buildings prediction figure" width="100%"/>
 <img src="https://github.com/luangtatipsy/intel-image-classification/blob/master/results/figures/forest.png" alt="forest prediction figure" width="100%"/>
 <img src="https://github.com/luangtatipsy/intel-image-classification/blob/master/results/figures/glacier.png" alt="glacier prediction figure" width="100%"/>
@@ -742,11 +742,11 @@ What I mentioned above is a roughly observation. A confusion matrix heatmap show
 <img src="https://github.com/luangtatipsy/intel-image-classification/blob/master/results/figures/sea.png" alt="sea prediction figure" width="100%"/>
 <img src="https://github.com/luangtatipsy/intel-image-classification/blob/master/results/figures/street.png" alt="street prediction figure" width="100%"/>
 
-## Convert Model to TensorFlow JS
-In order to use model in front-end web application, the trained model has to be converted into [Tensorflow JS](https://www.tensorflow.org/js) format. The converted TensorFlow JS model will be placed under `models` directory named `intel_img_clf_best_weight.js` by default.
+## Конвертировать модель в TensorFlow JS
+Для использования модели в front-end веб-приложении обученная модель должна быть преобразована в формат [Tensorflow JS](https://www.tensorflow.org/js) Преобразованная модель TensorFlow JS будет помещена в 'models' с именем intel_img_clf_best_weight.jsпо умолчанию. 
 ```sh
 python converter.py
 ```
-
-## License
+Использовано согласно:
+## Лицензия
 This repository is distributed under [MIT License](https://github.com/luangtatipsy/intel-image-classification/blob/master/LICENSE)
